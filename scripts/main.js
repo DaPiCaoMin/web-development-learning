@@ -14,8 +14,12 @@ let myHeading = document.querySelector("h1");
 
 function setUserName() {
     let myName = prompt("请输入用户名");
-    localStorage.setItem("name", myName);
-    myHeading.textContent = "Mozilla is cool，" + myName;
+    if (!myName) {
+        setUserName();
+    } else {
+        localStorage.setItem("name", myName);
+        myHeading.textContent = "Mozilla is cool，" + myName;
+    }
 }
 
 if (!localStorage.getItem("name")) {
